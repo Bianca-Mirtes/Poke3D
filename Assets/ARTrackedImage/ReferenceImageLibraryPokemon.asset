@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibraryPokemon
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5443632978851064099
+  m_GuidHigh: 1175641104668292749
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5173796492160859812
+      m_GuidHigh: 12448679101320503979
+    m_SerializedTextureGuid:
+      m_GuidLow: 483057991066780893
+      m_GuidHigh: 14542712997577821866
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-052
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4644885166585927677
+      m_GuidHigh: 12888777345371209348
+    m_SerializedTextureGuid:
+      m_GuidLow: 7274518104554356143
+      m_GuidHigh: 10490137432326149257
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-074
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5615967978740530348
+      m_GuidHigh: 14054914321442298767
+    m_SerializedTextureGuid:
+      m_GuidLow: 186020956645741680
+      m_GuidHigh: 4972819358774246443
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-076
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4940041005604507625
+      m_GuidHigh: 17557765160641423499
+    m_SerializedTextureGuid:
+      m_GuidLow: 2856463861786865747
+      m_GuidHigh: 16133742650220238105
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-092
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5501571942742731931
+      m_GuidHigh: 3045349090425080507
+    m_SerializedTextureGuid:
+      m_GuidLow: 109409366280985279
+      m_GuidHigh: 11489184649917383786
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-099
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4927471572035453635
+      m_GuidHigh: 14148224405470857895
+    m_SerializedTextureGuid:
+      m_GuidLow: 8661792337465586880
+      m_GuidHigh: 1646908716785711097
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-102
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5530761648816184353
+      m_GuidHigh: 10620674241368861336
+    m_SerializedTextureGuid:
+      m_GuidLow: 11602554187937054132
+      m_GuidHigh: 3178522419237140280
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-114
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5473510656745279262
+      m_GuidHigh: 7691370109207537037
+    m_SerializedTextureGuid:
+      m_GuidLow: 5378518179357500118
+      m_GuidHigh: 14891167987535246795
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-124
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5007863638915572885
+      m_GuidHigh: 8690332128393808035
+    m_SerializedTextureGuid:
+      m_GuidLow: 18434484933002802185
+      m_GuidHigh: 9758792518012561035
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv07-127
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5693058969562299874
+      m_GuidHigh: 6596191912732168352
+    m_SerializedTextureGuid:
+      m_GuidLow: 12201383344523283047
+      m_GuidHigh: 10521551263668523225
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv08-024
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5325252916745175888
+      m_GuidHigh: 10527567875960591276
+    m_SerializedTextureGuid:
+      m_GuidLow: 7148491913627900814
+      m_GuidHigh: 11481752512809250905
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv08-025
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5322945648391080343
+      m_GuidHigh: 744084481363187603
+    m_SerializedTextureGuid:
+      m_GuidLow: 5779384605896611375
+      m_GuidHigh: 15255357619218946202
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv08-095
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5738736900134045056
+      m_GuidHigh: 11894633218038798264
+    m_SerializedTextureGuid:
+      m_GuidLow: 1829733527568875344
+      m_GuidHigh: 2420331502387211497
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv08-127
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4694944626460431201
+      m_GuidHigh: 17251398510432406696
+    m_SerializedTextureGuid:
+      m_GuidLow: 10710763713703909066
+      m_GuidHigh: 8690278949588612714
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv08-138
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5598687233363112899
+      m_GuidHigh: 15993815386128172474
+    m_SerializedTextureGuid:
+      m_GuidLow: 4504879721271086779
+      m_GuidHigh: 3796509494775745435
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: sv08-150
+    m_Texture: {fileID: 0}
