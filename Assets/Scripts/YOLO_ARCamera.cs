@@ -19,6 +19,7 @@ public class YOLO_ARCamera : MonoBehaviour
     [SerializeField] private TextMeshProUGUI debugText;
 
     [SerializeField] private Material sharpenMaterial;
+    private GameObject currentPokemon;
 
     [Header("AR TRacked Image")]
     [SerializeField] private ARTrackedImageManager trackedImageManager;
@@ -26,7 +27,7 @@ public class YOLO_ARCamera : MonoBehaviour
     private Dictionary<string, string> modelsInStandby = new();
 
     [Header("API")]
-    [SerializeField] private string apiUrl = "https://a673b711cd26.ngrok-free.app/inference";
+    [SerializeField] private string apiUrl = "https://e5e9da994e73.ngrok-free.app/inference";
 
     [Header("AR Camera")]
     public ARCameraManager arCameraManager;
@@ -48,6 +49,11 @@ public class YOLO_ARCamera : MonoBehaviour
         captureButton.onClick.AddListener(OnCaptureAndRunInference);
     }
 
+    public GameObject GetCurentPokemon()
+    {
+        return currentPokemon;
+    }
+
     private void Update()
     {
         if (trackedImageManager == null) return;
@@ -57,26 +63,39 @@ public class YOLO_ARCamera : MonoBehaviour
             if (trackedImage.trackingState == TrackingState.Tracking)
             {
                 string markerName = trackedImage.referenceImage.name;
-                debugText.text = $"Nome do marcardor: {markerName}";
+
                 // Verifica se a API já identificou essa carta
                 if (modelsInStandby.TryGetValue(markerName, out string modelName))
                 {
-                    if (!spawnedPrefabs.ContainsKey(markerName))
+                    if (!spawnedPrefabs.TryGetValue(markerName, out GameObject instance) || instance == null)
                     {
                         string path = $"Models/{modelName}";
-                        
+
                         GameObject prefab = Resources.Load<GameObject>(path);
-                        debugText.text = $"Carregando modelo: {path}";
+                        debugText.text = $"Carregando modelo: {markerName}";
                         if (prefab != null)
                         {
-                            GameObject instance = Instantiate(prefab, trackedImage.transform);
+                            instance = Instantiate(prefab, trackedImage.transform);
+                            instance.transform.position = trackedImage.transform.position;
+                            currentPokemon = instance;
                             spawnedPrefabs[markerName] = instance;
                         }
                     }
+
+                    // Atualiza a posição e ativa o modelo
+                    instance.transform.position = trackedImage.transform.position;
+                    currentPokemon = instance;
+                    instance.SetActive(true);
                 }
+            }
+            else
+            {
+                if(spawnedPrefabs.ContainsKey(trackedImage.referenceImage.name))
+                    spawnedPrefabs[trackedImage.referenceImage.name].SetActive(false);
             }
         }
     }
+
 
     public void OnCaptureAndRunInference()
     {
@@ -128,7 +147,6 @@ public class YOLO_ARCamera : MonoBehaviour
             SaveImage(upscaled);
 
             StartCoroutine(SendImageToAPI(upscaled));
-
         }
     }
 
@@ -161,20 +179,11 @@ public class YOLO_ARCamera : MonoBehaviour
     {
         byte[] bytes = image.EncodeToPNG();
 
-        /*string folderPath = Path.Combine(Application.dataPath, "Capturas");
-        if (!Directory.Exists(folderPath))
-            Directory.CreateDirectory(folderPath);
-        string filePath = Path.Combine(folderPath, filename);
-
-        //File.WriteAllBytes(filePath, bytes);*/
-
         string fileName = $"frame_{DateTime.Now:yyyyMMdd_HHmmss}.png";
         string fullPath = Path.Combine(Application.persistentDataPath, fileName);
 
         //Salva no armazenamento interno da aplicação
         File.WriteAllBytes(fullPath, bytes);
-
-        Debug.Log($"📸 Imagem salva em: {fullPath}");
     }
 
     IEnumerator SendImageToAPI(Texture2D image)
@@ -185,6 +194,8 @@ public class YOLO_ARCamera : MonoBehaviour
 
         // Monta o payload JSON
         string jsonPayload = JsonUtility.ToJson(new ImagePayload(base64Image));
+
+        debugText.text = "Payload Montado!";
         using (UnityWebRequest request = new UnityWebRequest(apiUrl, "POST"))
         {
             byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
@@ -194,11 +205,8 @@ public class YOLO_ARCamera : MonoBehaviour
 
             yield return request.SendWebRequest();
 
-            #if UNITY_2020_1_OR_NEWER
-                 if (request.result != UnityWebRequest.Result.Success)
-            #else
-                 if (request.isHttpError || request.isNetworkError)
-            #endif
+            debugText.text = "Result request: " + request.result;
+            if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Erro: {request.responseCode} - {request.downloadHandler.text}");
             }
@@ -208,6 +216,8 @@ public class YOLO_ARCamera : MonoBehaviour
                 InferenceResponse result = JsonUtility.FromJson<InferenceResponse>(responseJson);
                 Debug.Log($"Card Set: {result.card_set}");
                 Debug.Log($"Card Number: {result.card_num}");
+
+                debugText.text = $"Card Set: {result.card_set} | Card Number: {result.card_num}";
 
                 string filePath = Path.Combine(Application.persistentDataPath, "resultado.txt");
                 File.WriteAllText(filePath, $"Card Set: {result.card_set}\nCard Number: {result.card_num}");
@@ -220,7 +230,9 @@ public class YOLO_ARCamera : MonoBehaviour
 
     public void ShowCard(string set, string num)
     {
-        string prefix = set switch
+        string newSet = new string(set.Take(3).ToArray());
+
+        string prefix = newSet switch
         {
             "SCR" => "sv07",
             "SSP" => "sv08",
@@ -230,7 +242,7 @@ public class YOLO_ARCamera : MonoBehaviour
         string number = new string(num.Take(3).Where(char.IsDigit).ToArray());
         string model = $"{prefix}-{number}_cropped_art_complete_textured";
 
-        string marker = $"sv{prefix}-{number}";
+        string marker = $"{prefix}-{number}";
 
         // Armazena esse modelo como pendente para o marcador detectado
         modelsInStandby[marker] = model;

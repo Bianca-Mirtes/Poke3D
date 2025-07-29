@@ -1,13 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8989720465253751461
+--- !u!1 &4378052724685526810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175562797677205979}
+  m_Layer: 0
+  m_Name: sv08-127_cropped_art_complete_textured
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175562797677205979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378052724685526810}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3171076586342011509}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1842932867595983815
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1175562797677205979}
     m_Modifications:
+    - target: {fileID: 3860294028772379058, guid: 14dadf15a46ea474593733594555e544, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860294028772379058, guid: 14dadf15a46ea474593733594555e544, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860294028772379058, guid: 14dadf15a46ea474593733594555e544, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3860294028772379058, guid: 14dadf15a46ea474593733594555e544, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,6 +92,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3860294028772379058, guid: 14dadf15a46ea474593733594555e544, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4140970129914894641, guid: 14dadf15a46ea474593733594555e544, type: 3}
       propertyPath: m_Name
       value: sv08-127_cropped_art_complete_textured
@@ -57,3 +105,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8670829309088485133, guid: 14dadf15a46ea474593733594555e544, type: 3}
+--- !u!4 &3171076586342011509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3860294028772379058, guid: 14dadf15a46ea474593733594555e544, type: 3}
+  m_PrefabInstance: {fileID: 1842932867595983815}
+  m_PrefabAsset: {fileID: 0}

@@ -16,15 +16,15 @@ public class RotationController : MonoBehaviour
 
     private void RotateLeft()
     {
-        Transform obj = GameObject.FindWithTag("Target").transform;
+        Transform obj = FindFirstObjectByType<YOLO_ARCamera>().GetCurentPokemon().transform.GetChild(0);
         if (obj != null)
-            obj.Rotate(0, 60, 0);
+            obj.Rotate(0, 0, 60);
     }
 
     private void RotateRight()
     {
-        Transform obj = GameObject.FindWithTag("Target").transform;
+        Transform obj = FindFirstObjectByType<YOLO_ARCamera>().GetCurentPokemon().transform.GetChild(0);
         if(obj != null)
-            obj.Rotate(0, -60, 0);
+            obj.Rotate(0, 0, -60);
     }
 }
