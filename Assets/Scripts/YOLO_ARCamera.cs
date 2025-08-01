@@ -27,7 +27,7 @@ public class YOLO_ARCamera : MonoBehaviour
     private Dictionary<string, string> modelsInStandby = new();
 
     [Header("API")]
-    [SerializeField] private string apiUrl = "https://e5e9da994e73.ngrok-free.app/inference";
+    [SerializeField] private string apiUrl = "https://f9f746f63269.ngrok-free.app/inference";
 
     [Header("AR Camera")]
     public ARCameraManager arCameraManager;
@@ -143,10 +143,12 @@ public class YOLO_ARCamera : MonoBehaviour
             // Upscale por RenderTexture
             Texture2D upscaled = UpscaleTexture(cameraTexture, 2);
 
-            // Salva a imagem capturada
-            SaveImage(upscaled);
+            Texture2D rotated = RotateTexture(upscaled);
 
-            StartCoroutine(SendImageToAPI(upscaled));
+            // Salva a imagem capturada
+            SaveImage(rotated);
+
+            StartCoroutine(SendImageToAPI(rotated));
         }
     }
 
@@ -173,6 +175,29 @@ public class YOLO_ARCamera : MonoBehaviour
         rt.Release();
 
         return result;
+    }
+
+    Texture2D RotateTexture(Texture2D originalTexture)
+    {
+        int width = originalTexture.width;
+        int height = originalTexture.height;
+
+        Texture2D rotatedTexture = new Texture2D(height, width, originalTexture.format, false);
+
+        Color32[] originalPixels = originalTexture.GetPixels32();
+        Color32[] rotatedPixels = new Color32[originalPixels.Length];
+
+        for (int x = 0; x < width; ++x)
+        {
+            for (int y = 0; y < height; ++y)
+            {
+                rotatedPixels[y + (width - 1 - x) * height] = originalPixels[x + y * width];
+            }
+        }
+
+        rotatedTexture.SetPixels32(rotatedPixels);
+        rotatedTexture.Apply();
+        return rotatedTexture;
     }
 
     void SaveImage(Texture2D image)

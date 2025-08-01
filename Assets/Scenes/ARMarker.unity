@@ -584,7 +584,7 @@ MonoBehaviour:
   debugText: {fileID: 324433929}
   sharpenMaterial: {fileID: 2100000, guid: 452a778b01bc149498d3c4a253405a27, type: 2}
   trackedImageManager: {fileID: 2512387470422636670}
-  apiUrl: https://e5e9da994e73.ngrok-free.app/inference
+  apiUrl: https://f9f746f63269.ngrok-free.app/inference
   arCameraManager: {fileID: 2512387468973847747}
 --- !u!4 &916585656
 Transform:
