@@ -116,7 +116,7 @@ public class YOLO_ARCamera : MonoBehaviour
             {
                 inputRect = new RectInt(0, 0, nativeWidth, nativeHeight),
                 outputDimensions = new Vector2Int(nativeWidth, nativeHeight),
-                outputFormat = TextureFormat.RGB24,
+                outputFormat = TextureFormat.RGBA32,
                 transformation = XRCpuImage.Transformation.MirrorX
             };
 
@@ -140,15 +140,20 @@ public class YOLO_ARCamera : MonoBehaviour
 
             buffer.Dispose();
 
-            // Upscale por RenderTexture
-            Texture2D upscaled = UpscaleTexture(cameraTexture, 2);
+            // Upscale por RenderTexture para aumentar a nitidez
+            Texture2D upscaled = UpscaleTexture(cameraTexture, 3);
 
+            // Corrige rotação
             Texture2D rotated = RotateTexture(upscaled);
 
-            // Salva a imagem capturada
-            SaveImage(rotated);
+            // Sharpen extra via CPU (melhora brilho mais contraste)
+            //Texture2D sharpened = SharpenAndContrast(rotated, 0.3f, 1.3f);
+            Texture2D sharpened = UnsharpMask(rotated, 1.5f, 0.05f); // você pode ajustar
 
-            StartCoroutine(SendImageToAPI(rotated));
+            // Salva a imagem capturada
+            SaveImage(sharpened);
+
+            StartCoroutine(SendImageToAPI(sharpened));
         }
     }
 
@@ -158,10 +163,10 @@ public class YOLO_ARCamera : MonoBehaviour
         int upscaleHeight = source.height * upscaleFactor;
 
         RenderTexture rt = new RenderTexture(upscaleWidth, upscaleHeight, 0);
-        rt.filterMode = FilterMode.Bilinear;
+        rt.filterMode = FilterMode.Point;
 
         // Passa a textura para o shader de sharpening
-        sharpenMaterial.SetFloat("_SharpenStrength", 0.4f); // ajuste entre 0 e 1
+        sharpenMaterial.SetFloat("_SharpenStrength", 0.5f); // ajuste entre 0 e 1
 
         Graphics.Blit(source, rt, sharpenMaterial);
 
@@ -176,6 +181,99 @@ public class YOLO_ARCamera : MonoBehaviour
 
         return result;
     }
+
+    Texture2D BlurTexture(Texture2D source, int blurSize)
+    {
+        Texture2D blurred = new Texture2D(source.width, source.height);
+        Color[] pixels = source.GetPixels();
+
+        for (int y = 0; y < source.height; y++)
+        {
+            for (int x = 0; x < source.width; x++)
+            {
+                Color avg = Color.black;
+                int blurPixelCount = 0;
+
+                for (int ky = -blurSize; ky <= blurSize; ky++)
+                {
+                    int py = Mathf.Clamp(y + ky, 0, source.height - 1);
+
+                    for (int kx = -blurSize; kx <= blurSize; kx++)
+                    {
+                        int px = Mathf.Clamp(x + kx, 0, source.width - 1);
+                        avg += source.GetPixel(px, py);
+                        blurPixelCount++;
+                    }
+                }
+
+                avg /= blurPixelCount;
+                blurred.SetPixel(x, y, avg);
+            }
+        }
+
+        blurred.Apply();
+        return blurred;
+    }
+
+    Texture2D UnsharpMask(Texture2D input, float amount = 1.5f, float threshold = 0.05f)
+    {
+        Texture2D blurred = BlurTexture(input, 1); // blurSize = 1 é ideal para texto
+        Texture2D result = new Texture2D(input.width, input.height);
+
+        for (int y = 0; y < input.height; y++)
+        {
+            for (int x = 0; x < input.width; x++)
+            {
+                Color original = input.GetPixel(x, y);
+                Color blurredPixel = blurred.GetPixel(x, y);
+                Color diff = original - blurredPixel;
+
+                // Aplica threshold para não amplificar ruído
+                if (Mathf.Abs(diff.r) < threshold) diff.r = 0;
+                if (Mathf.Abs(diff.g) < threshold) diff.g = 0;
+                if (Mathf.Abs(diff.b) < threshold) diff.b = 0;
+
+                Color final = original + diff * amount;
+                final.a = 1;
+                result.SetPixel(x, y, final);
+            }
+        }
+
+        result.Apply();
+        return result;
+    }
+
+    /*Texture2D SharpenAndContrast(Texture2D source, float sharpenStrength = 0.3f, float contrast = 1.3f)
+    {
+        Texture2D result = new Texture2D(source.width, source.height);
+        Color[] pixels = source.GetPixels();
+
+        for (int y = 1; y < source.height - 1; y++)
+        {
+            for (int x = 1; x < source.width - 1; x++)
+            {
+                Color current = source.GetPixel(x, y);
+                Color top = source.GetPixel(x, y + 1);
+                Color bottom = source.GetPixel(x, y - 1);
+                Color left = source.GetPixel(x - 1, y);
+                Color right = source.GetPixel(x + 1, y);
+
+                // Sharpen
+                Color sharpened = current * (1 + 4 * sharpenStrength) - (top + bottom + left + right) * sharpenStrength;
+
+                // Contraste
+                sharpened.r = Mathf.Clamp01((sharpened.r - 0.5f) * contrast + 0.5f);
+                sharpened.g = Mathf.Clamp01((sharpened.g - 0.5f) * contrast + 0.5f);
+                sharpened.b = Mathf.Clamp01((sharpened.b - 0.5f) * contrast + 0.5f);
+                sharpened.a = 1;
+
+                result.SetPixel(x, y, sharpened);
+            }
+        }
+
+        result.Apply();
+        return result;
+    }*/
 
     Texture2D RotateTexture(Texture2D originalTexture)
     {

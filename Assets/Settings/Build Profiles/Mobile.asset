@@ -35,7 +35,7 @@ MonoBehaviour:
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
     - line: '|   companyName: DefaultCompany'
-    - line: '|   productName: Marker-based AR'
+    - line: '|   productName: Poke3D'
     - line: '|   defaultCursor: {instanceID: 0}'
     - line: '|   cursorHotspot: {x: 0, y: 0}'
     - line: '|   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b:
@@ -320,7 +320,15 @@ MonoBehaviour:
     - line: '|   AndroidAppBundleSizeToValidate: 150'
     - line: '|   AndroidReportGooglePlayAppDependencies: 1'
     - line: '|   androidSymbolsSizeThreshold: 800'
-    - line: '|   m_BuildTargetIcons: []'
+    - line: '|   m_BuildTargetIcons:'
+    - line: '|   - m_BuildTarget: '
+    - line: '|     m_Icons:'
+    - line: '|     - serializedVersion: 2'
+    - line: '|       m_Icon: {fileID: 2800000, guid: e9f2e2a3cbbe9c3449ee0b5e6b0293a2,
+        type: 3}'
+    - line: '|       m_Width: 128'
+    - line: '|       m_Height: 128'
+    - line: '|       m_Kind: 0'
     - line: '|   m_BuildTargetPlatformIcons:'
     - line: '|   - m_BuildTarget: iPhone'
     - line: '|     m_Icons:'
@@ -980,10 +988,10 @@ MonoBehaviour:
     - rid: 3169961902512275532
       type: {class: AndroidPlatformBuildSettings, ns: UnityEditor.Android, asm: UnityEditor.Android.Extensions}
       data:
-        m_Development: 1
+        m_Development: 0
         m_ConnectProfiler: 0
         m_BuildWithDeepProfilingSupport: 0
-        m_AllowDebugging: 1
+        m_AllowDebugging: 0
         m_WaitForManagedDebugger: 0
         m_ManagedDebuggerFixedPort: 0
         m_ExplicitNullChecks: 0
@@ -991,13 +999,13 @@ MonoBehaviour:
         m_ExplicitArrayBoundsChecks: 0
         m_CompressionType: 2
         m_InstallInBuildFolder: 0
-        m_BuildSubtarget: 0
+        m_BuildSubtarget: 5
         m_BuildSystem: 1
         m_ExportAsGoogleAndroidProject: 0
         m_DebugSymbolLevel: 1
         m_DebugSymbolFormat: 5
         m_CurrentDeploymentTargetId: RXCY1047KJH
-        m_BuildType: 1
+        m_BuildType: 2
         m_BuildAppBundle: 0
         m_IPAddressToConnect: 
         m_SymlinkSources: 0
