@@ -23,8 +23,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 483057991066780893
       m_GuidHigh: 14542712997577821866
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-052
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -33,8 +33,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 7274518104554356143
       m_GuidHigh: 10490137432326149257
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-074
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -43,8 +43,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 186020956645741680
       m_GuidHigh: 4972819358774246443
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-076
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -53,8 +53,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 2856463861786865747
       m_GuidHigh: 16133742650220238105
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-092
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -63,8 +63,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 109409366280985279
       m_GuidHigh: 11489184649917383786
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-099
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -73,8 +73,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 8661792337465586880
       m_GuidHigh: 1646908716785711097
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-102
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -83,8 +83,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 11602554187937054132
       m_GuidHigh: 3178522419237140280
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-114
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -93,8 +93,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 5378518179357500118
       m_GuidHigh: 14891167987535246795
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-124
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -103,8 +103,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 18434484933002802185
       m_GuidHigh: 9758792518012561035
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv07-127
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -113,8 +113,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 12201383344523283047
       m_GuidHigh: 10521551263668523225
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv08-024
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -123,8 +123,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 7148491913627900814
       m_GuidHigh: 11481752512809250905
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv08-025
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -133,8 +133,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 5779384605896611375
       m_GuidHigh: 15255357619218946202
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv08-095
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -143,8 +143,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 1829733527568875344
       m_GuidHigh: 2420331502387211497
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv08-127
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -153,8 +153,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 10710763713703909066
       m_GuidHigh: 8690278949588612714
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv08-138
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -163,7 +163,57 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 4504879721271086779
       m_GuidHigh: 3796509494775745435
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
     m_Name: sv08-150
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4907254839785442068
+      m_GuidHigh: 12562015464888305550
+    m_SerializedTextureGuid:
+      m_GuidLow: 2842982467974140259
+      m_GuidHigh: 5388403356753732953
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
+    m_Name: sv08-143
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5384198135610129672
+      m_GuidHigh: 8627587667561541014
+    m_SerializedTextureGuid:
+      m_GuidLow: 4829204438919925789
+      m_GuidHigh: 8497781950371413930
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
+    m_Name: sv07-050
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5465786473409014829
+      m_GuidHigh: 17230679751469346477
+    m_SerializedTextureGuid:
+      m_GuidLow: 3252801879976681205
+      m_GuidHigh: 14115690531960561064
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
+    m_Name: sv07-108
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5365105554080414301
+      m_GuidHigh: 12403490753345692290
+    m_SerializedTextureGuid:
+      m_GuidLow: 18308328795099268824
+      m_GuidHigh: 16887355343954471082
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
+    m_Name: sv07-098
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4929478736905488640
+      m_GuidHigh: 4619558848604138887
+    m_SerializedTextureGuid:
+      m_GuidLow: 13210215678485625946
+      m_GuidHigh: 16138537626211603080
+    m_Size: {x: 0.064, y: 0.088}
+    m_SpecifySize: 1
+    m_Name: sv07-125
     m_Texture: {fileID: 0}
