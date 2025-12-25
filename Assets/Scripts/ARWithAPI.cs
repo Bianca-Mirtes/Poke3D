@@ -14,7 +14,7 @@ using System.Linq;
 using TMPro;
 public class ARWithAPI : MonoBehaviour
 {
-    [Header(" User UI")]
+    [Header("User UI")]
     [SerializeField] private Button captureButton;
     [SerializeField] private TextMeshProUGUI debugText;
     [SerializeField] private TMP_InputField inputUrlAPI;
@@ -32,27 +32,20 @@ public class ARWithAPI : MonoBehaviour
     [Header("API")]
     private string apiUrl;
 
+    [Header("Profiler")]
+    private string filePath;
+
     [Header("AR Camera")]
     public ARCameraManager arCameraManager;
 
-    [Header("ICR")]
-    private Worker worker;
-    Tensor<float> centersToCorners;
-
-    public struct BoundingBox
-    {
-        public float centerX;
-        public float centerY;
-        public float width;
-        public float height;
-        public string label;
-    }
     private void Start()
     {
         // fallback
         apiUrl = "https://c8ce045e3795.ngrok-free.app/inference";
         captureButton.onClick.AddListener(OnCaptureAndRunInference);
         updateUrlAPI.onClick.AddListener(UpdateURLAPI);
+
+        filePath = Path.Combine(Application.persistentDataPath, "execution_time_api.txt");
     }
     public void UpdateURLAPI()
     {
@@ -60,7 +53,7 @@ public class ARWithAPI : MonoBehaviour
         {
             if(alert.gameObject.activeSelf) 
                 alert.gameObject.SetActive(false);
-            if (inputUrlAPI.text[-1] == '/')
+            if (inputUrlAPI.text[inputUrlAPI.text.Length-1] == '/')
                 apiUrl = inputUrlAPI.text.ToLower().Trim() + "inference";
             else
                 apiUrl = inputUrlAPI.text.ToLower().Trim() + "/inference";
@@ -118,8 +111,6 @@ public class ARWithAPI : MonoBehaviour
             }
         }
     }
-
-
     public void OnCaptureAndRunInference()
     {
         ExecuteML();
@@ -176,8 +167,14 @@ public class ARWithAPI : MonoBehaviour
             // Salva a imagem capturada
             SaveImage(sharpened);
 
-            StartCoroutine(SendImageToAPI(sharpened));
+            float time = ExecutionTime(()=> SendImage(sharpened));
+            SaveProfileFile(time);
         }
+    }
+
+     void SendImage(Texture2D image)
+    {
+        StartCoroutine(SendImageToAPI(image));
     }
 
     Texture2D UpscaleTexture(Texture2D source, int upscaleFactor)
@@ -300,6 +297,23 @@ public class ARWithAPI : MonoBehaviour
         File.WriteAllBytes(fullPath, bytes);
     }
 
+    private void SaveProfileFile(float time)
+    {
+        string content = $"Execution Time - (API Method): {time}ms";
+        File.WriteAllText(filePath, content);
+    }
+
+    private float ExecutionTime(Action method)
+    {
+        System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+
+        sw.Start();
+        method.Invoke();
+        sw.Stop();
+
+        return sw.Elapsed.Milliseconds;
+    }
+
     IEnumerator SendImageToAPI(Texture2D image)
     {
         // Converte a imagem em JPG
@@ -374,11 +388,5 @@ public class ARWithAPI : MonoBehaviour
     {
         public string card_set;
         public string card_num;
-    }
-
-    void OnDestroy()
-    {
-        centersToCorners?.Dispose();
-        worker?.Dispose();
     }
 }
